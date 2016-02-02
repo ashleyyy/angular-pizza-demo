@@ -26,4 +26,14 @@ angular.module('myApp.view1', ['ngRoute'])
   pizzas.success(function(data) {
     $scope.pizzas = data;
   })
+}])
+
+.controller('PizzaDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
+  $http.get('http://localhost:8080/pizza/'+$routeParams.pizzaId)
+    .success(function(data) { 
+      $scope.pizza = data; 
+    }) 
+    .error(function(err) { 
+      return err; 
+    })
 }]);
