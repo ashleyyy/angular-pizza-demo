@@ -1,0 +1,18 @@
+
+<div ng-controller="CreatePizzaCtrl">
+  <form novalidate class="simple-form" ng-submit="submit()">
+    Name: <input type="text" ng-model="name" /><br />
+    Price: <input type="number" ng-model="price" /><br />
+    Toppings: 
+<!--     <div ng-controller="ToppingCtrl">
+      <div ng-repeat ="topping in toppings">
+        {{ topping.name }}:
+        <input type="checkbox">
+      </div>
+    </div> -->
+
+<!--     <input type="button" ng-click="reset()" value="Reset" />
+ -->    <input type="submit" value="Save" />
+  </form>
+
+</div>

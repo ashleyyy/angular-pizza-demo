@@ -4,18 +4,23 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.version', 
-  'Controllers'
+  'Controllers',
+  'ngResource'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
-    .when('/pizzas', {
+    .when('/pizza', {
       templateUrl: 'partials/all-pizzas.html',
       controller: 'PizzaCtrl'
     })
-    .when('/pizzas/:pizzaId', {
+    .when('/pizza/:pizzaId', {
       templateUrl: 'partials/one-pizza.html',
       controller: 'PizzaDetailCtrl'
+    })
+    .when('/create', {
+      templateUrl: 'partials/make-pizza.html',
+      controller: 'CreatePizzaCtrl'
     })
     .otherwise({redirectTo: '/'});
 }]);
