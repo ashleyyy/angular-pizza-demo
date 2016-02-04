@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('Controllers', ['ngRoute', 'ngResource'])
+angular.module('Controllers', ['ngRoute'])
 
 
 .factory('PizzaFactory', function($resource) {
@@ -27,7 +27,7 @@ angular.module('Controllers', ['ngRoute', 'ngResource'])
     });
 }])
 
-.controller('ToppingCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('ToppingCtrl', ['$scope', '$http', '$filter', function($scope, $http, $filter) {
   $http.get('http://localhost:8080/topping') 
             .success(function(data) { 
               $scope.toppings = data; 
@@ -35,16 +35,40 @@ angular.module('Controllers', ['ngRoute', 'ngResource'])
             .error(function(err) { 
               return err; 
             }); 
+
+  // $scope.selection = [];
+
+  // $scope.$watch('toppings|filter:{selected:true}', function (nv) {
+  //   $scope.selection = nv.map(function (topping) {
+  //     return topping;
+  //   });
+  // }, true);
 }])
 
-.controller('CreatePizzaCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('CreatePizzaCtrl', ['$scope', '$http', '$filter', function($scope, $http, $filter) {
+  
+    $scope.pizza = {
+      "name": "",
+      "price": null,
+      "toppings": []
+    };
+
   $scope.submit = function() {
-    console.log('pushed button');
+    // debugger
+    console.log($scope.pizza.toppings);
+    var toppingsArray = $scope.pizza.toppings.map(function (topping) {
+      return JSON.parse(topping);
+    });
+
+    console.log(toppingsArray);
+
+  
     var data = {
-            "name": $scope.name,
-            "price": $scope.price
+            "name": $scope.pizza.name,
+            "price": $scope.pizza.price,
+            "toppings": toppingsArray
           };
-          console.log(data);
+  
 
     $http.post('http://localhost:8080/pizza/', data)
               .success(function(data, status, headers, config) {
@@ -57,6 +81,7 @@ angular.module('Controllers', ['ngRoute', 'ngResource'])
             };
     $scope.name='';
     $scope.price='';
+
 }])
 
 // .controller('CreatePizzaCtrl',function($scope, PizzaFactory) {

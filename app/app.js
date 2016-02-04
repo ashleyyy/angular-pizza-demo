@@ -4,8 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.version', 
-  'Controllers',
-  'ngResource'
+  'Controllers'
 ])
 
 .config(['$routeProvider', function($routeProvider) {

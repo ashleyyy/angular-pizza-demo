@@ -1,18 +1,35 @@
 
 <div ng-controller="CreatePizzaCtrl">
   <form novalidate class="simple-form" ng-submit="submit()">
-    Name: <input type="text" ng-model="name" /><br />
-    Price: <input type="number" ng-model="price" /><br />
+    Name: <input type="text" ng-model="pizza.name" /><br />
+    Price: <input type="number" ng-model="pizza.price" /><br />
     Toppings: 
-<!--     <div ng-controller="ToppingCtrl">
-      <div ng-repeat ="topping in toppings">
+    <div ng-controller="ToppingCtrl">
+    <!--   <div ng-repeat ="topping in toppings">
         {{ topping.name }}:
-        <input type="checkbox">
-      </div>
-    </div> -->
-
+        <input type="checkbox" value="{{ topping.name }}" id ="{{ topping.id }}" ng-model="topping.checked">
+        
+      </div> -->
+    <select name="toppings" id="toppingsSelect" ng-model="pizza.toppings" multiple>
+      <option ng-repeat="topping in toppings" value="{{ topping }}">{{topping.name}}</option>
+    </select>
+      here: {{ pizza.toppings }}
+    </div>
+there: {{ pizza }}
 <!--     <input type="button" ng-click="reset()" value="Reset" />
  -->    <input type="submit" value="Save" />
   </form>
 
 </div>
+
+
+<!-- [
+  "{
+    \"id\":\"855eae4f-02b0-4070-bf7b-e5da7012ab33\",
+    \"name\":\"Popcorn\"
+  }",
+  "{
+    \"id\":\"3b9d2cfb-c735-4636-b52b-0d85c8de8246\",
+    \"name\":\"Tuna\"
+  }"
+] -->
