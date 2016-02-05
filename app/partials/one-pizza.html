@@ -1,5 +1,8 @@
 <div class = "well">
-<h2>{{ pizza.name }}</h2>
+
+<div class="alert alert-success" data-ng-show="messages.pizza" data-ng-bind="messages.pizza"></div>
+
+<h2>{{ pizza.name }} <button type="button" class="btn btn-xs btn-primary" id="editPizzaButton">Edit</button></h2>
 <h3>Price: {{ pizza.price | currency }}</h3>
 
 Toppings:
@@ -9,4 +12,38 @@ Toppings:
     </div>
   </ul>
 </div>
+
+  <div ng-controller='EditPizzaCtrl'>
+    <form id="editPizzaForm" class="simple-form hidden" ng-submit="submit()" name="editPizzaForm" novalidate>
+    <fieldset class="form-group">
+      <label for="name">Pizza Name:</label> 
+      <input type="text" name="name" ng-model="pizza.name" class="form-control" required/>
+      <p ng-show="editPizzaForm.name.$invalid && !makePizzaForm.name.$pristine">Your pizza needs a name!</p>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="price">Pizza Price:</label> 
+      <input type="number" name="price" ng-model="pizza.price"  class="form-control" />
+    </fieldset>
+
+<!--     <fieldset class="form-group">
+      <label for="toppings">Toppings:<br /><small>(hold down ctrl to select multiple)</small></label>
+      <div ng-controller="ToppingCtrl">
+        <select name="toppings" id="toppingsSelect" ng-model="pizza.toppings" multiple class="form-control">
+          <option ng-repeat="topping in toppings" value="{{ topping }}">{{topping.name}}</option>
+        </select>
+      </div>
+    </fieldset> -->
+
+    <fieldset class="form-group">
+      <button type="button" class="btn btn-primary" ng-click="resetForm()">Reset</button>
+      <button type="button" class="btn btn-primary" ng-click="submit()" ng-disabled="makePizzaForm.$invalid" id="saveEditButton">Save</button>
+    </fieldset>
+    
+    </form>
+  </div>
+
+</div>
+
+
 

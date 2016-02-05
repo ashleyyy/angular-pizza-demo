@@ -14,7 +14,7 @@
   </fieldset>
 
   <fieldset class="form-group">
-    <label for="toppings">Toppings:<br /><small>(hold down ctrl to select multiple)</small></label>
+    <label for="toppings">Toppings:<br /><small class="text-muted">(hold down ctrl to select multiple)</small></label>
     <!-- to do, list selected pizza toppings here {{ pizza.toppings | json }} -->
     <div ng-controller="ToppingCtrl">
       <select name="toppings" id="toppingsSelect" ng-model="pizza.toppings" multiple class="form-control">
