@@ -6,6 +6,10 @@ angular.module('Controllers', ['ngRoute'])
   $scope.messages = {
       create: ''
   };
+
+  $scope.resetQuery = function() {
+    $scope.query = '';
+  };
 }])
 
 .controller('PizzaCtrl', ['$scope', '$http', function($scope, $http) {
