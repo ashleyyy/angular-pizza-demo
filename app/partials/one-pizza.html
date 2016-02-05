@@ -2,7 +2,15 @@
 
 <div class="alert alert-success" data-ng-show="messages.update" data-ng-bind="messages.update"></div>
 
-<h2>{{ pizza.name }} <button type="button" class="btn btn-xs btn-primary" id="editPizzaButton">Edit</button></h2>
+<h2>{{ pizza.name }} 
+
+  <button type="button" class="btn btn-xs btn-primary" id="editPizzaButton">Edit</button> 
+  
+  <span ng-controller="DeletePizzaCtrl">
+    <button type="button" ng-click="submit()" class="btn btn-xs btn-primary" id="deletePizzaButton">Delete</button>
+  </span>
+
+</h2>
 <h3>Price: {{ pizza.price | currency }}</h3>
 
 Toppings:
