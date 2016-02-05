@@ -2,11 +2,6 @@
 
 angular.module('Controllers', ['ngRoute'])
 
-
-.factory('PizzaFactory', function($resource) {
-  return $resource('http://localhost:8080/pizza/:id'); // Note the full endpoint address
-})
-
 .controller('PizzaCtrl', ['$scope', '$http', function($scope, $http) {
   $http.get('http://localhost:8080/pizza') 
             .success(function(data) { 
@@ -35,73 +30,52 @@ angular.module('Controllers', ['ngRoute'])
             .error(function(err) { 
               return err; 
             }); 
-
-  // $scope.selection = [];
-
-  // $scope.$watch('toppings|filter:{selected:true}', function (nv) {
-  //   $scope.selection = nv.map(function (topping) {
-  //     return topping;
-  //   });
-  // }, true);
 }])
 
-.controller('CreatePizzaCtrl', ['$scope', '$http', '$filter', function($scope, $http, $filter) {
+.controller('CreatePizzaCtrl', ['$scope', '$http', '$filter', '$location', function($scope, $http, $filter, $location) {
   
-    $scope.pizza = {
+  $scope.pizza = {
       "name": "",
       "price": null,
       "toppings": []
-    };
+  };
+
+  $scope.resetForm = function() {
+      $scope.pizza = {
+        "name": "",
+        "price": null,
+        "toppings": []
+      };
+      $scope.makePizzaForm.$setPristine();
+  };
 
   $scope.submit = function() {
-    // debugger
-    console.log($scope.pizza.toppings);
+    
     var toppingsArray = $scope.pizza.toppings.map(function (topping) {
       return JSON.parse(topping);
     });
 
-    console.log(toppingsArray);
-
-  
     var data = {
             "name": $scope.pizza.name,
             "price": $scope.pizza.price,
             "toppings": toppingsArray
           };
   
-
     $http.post('http://localhost:8080/pizza/', data)
               .success(function(data, status, headers, config) {
-                // $scope.message = data;
-                console.log('success');
+                // TODO: redirect to detail page of new pizza
+                $location.path('/pizza/')
                })
               .error(function(err) { 
               return err; 
                }); 
-            };
-    $scope.name='';
-    $scope.price='';
+     // TODO: reset form on submit         
+    $scope.makePizzaForm.$setPristine();
+  };
+
+
 
 }])
-
-// .controller('CreatePizzaCtrl',function($scope, PizzaFactory) {
-//   $scope.submit = function() {
-//     console.log('submit works?');
-  
-
-//   $scope.pizza = new PizzaFactory(); //You can instantiate resource class
-
-//   $scope.pizza.name = $scope.name;
-//   $scope.pizza.price = $scope.price;
-//   console.log("scope.pizza " + $scope.pizza)
-
-
-//   PizzaFactory.save($scope.pizza, function() {
-//     //data saved. do something here.
-//     console.log('success');
-//   }); //saves an entry. Assuming $scope.entry is the Entry object  
-// }
-// })
 
 .controller('ToppingDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
   $http.get('http://localhost:8080/topping/'+$routeParams.toppingId)

@@ -1,4 +1,8 @@
+<h3>Available Pizzas:</h3>
 <div ng-controller="PizzaCtrl">
-<p>This is the partial for ALL PIZZAS.</p>
-<div ng-repeat ="pizza in pizzas">
-<p><a href ="#/pizza/{{pizza.id}}">{{ pizza.name }}</p></a>
+  <ul>
+    <div ng-repeat ="pizza in pizzas">
+    <li><a href ="#/pizza/{{pizza.id}}">{{ pizza.name }}</a></li>
+    </div>
+  </ul>
+</div>
