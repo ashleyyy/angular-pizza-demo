@@ -11,12 +11,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  
 </head>
+
 <body>
-<h1><a href='/app/#/pizza/'>PIZZA TIME</a> </h1>
+<div class="container">
+  <nav class="navbar navbar-default">
+   
+      <div class="navbar-header">
+        <a class="navbar-brand" href='/app/#/pizza/'>PizzaTime</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/app/#/pizza/">All pizzas</a></li>
+          <li><a href="/app/#/create/">Make your own pizza!</a></li>      
+        </ul>
+
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div><!-- /.navbar-collapse -->
+  </nav>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -24,8 +45,17 @@
 
   <div ng-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-footer">
+        <ul class="nav navbar-nav">
+          <li><a href="mailto:ashleyfisher@gmail.com">Ashley Fisher</a></li>      
+        </ul>
+      </div>
+    </div>
+  </nav>
 
+</div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
