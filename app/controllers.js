@@ -72,13 +72,7 @@ angular.module('Controllers', ['ngRoute'])
       $http.post('http://localhost:8080/pizza/', data)
                 .success(function(data, status, headers, config) {
                   $location.path('/pizza/');
-                  $scope.pizza = {
-                    "name": "",
-                    "price": null,
-                    "toppings": []
-                  };
-                  $scope.makePizzaForm.$setPristine();
-                  $scope.messages.create = 'Pizza has been created!';
+                  $scope.messages.create = $scope.pizza.name + ' has been created!';
                  })
                 .error(function(err) { 
                   $scope.messages = err;
