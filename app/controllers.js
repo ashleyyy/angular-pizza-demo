@@ -72,7 +72,6 @@ angular.module('Controllers', ['ngRoute'])
                  }); 
        // TODO: reset form on submit         
       $scope.makePizzaForm.$setPristine();
-
   };
 
 
