@@ -46,6 +46,7 @@ angular.module('Controllers', ['ngRoute'])
         "price": null,
         "toppings": []
       };
+      $scope.messages = null;
       $scope.makePizzaForm.$setPristine();
   };
 
@@ -64,14 +65,13 @@ angular.module('Controllers', ['ngRoute'])
       $http.post('http://localhost:8080/pizza/', data)
                 .success(function(data, status, headers, config) {
                   console.log('success');
-                  $scope.messages = 'some text';
-                  $location.path('/pizza/');
+                  // $location.path('/pizza/');
+                  $scope.makePizzaForm.$setPristine();
+                  $scope.messages = 'Pizza has been created!';
                  })
                 .error(function(err) { 
-                return err; 
+                  $scope.messages = err;
                  }); 
-       // TODO: reset form on submit         
-      $scope.makePizzaForm.$setPristine();
 
   };
 
