@@ -1,6 +1,6 @@
 <div class = "well">
 
-<h2>{{ pizza.name }}</h2>
+<h2>{{ pizza.name }} <button type="button" class="btn btn-xs btn-primary" id="editPizzaButton">Edit</button></h2>
 <h3>Price: {{ pizza.price | currency }}</h3>
 
 Toppings:
@@ -12,7 +12,7 @@ Toppings:
 </div>
 
   <div ng-controller='EditPizzaCtrl'>
-    <form class="simple-form" ng-submit="submit()" name="editPizzaForm" novalidate>
+    <form id="editPizzaForm" class="simple-form hidden" ng-submit="submit()" name="editPizzaForm" novalidate>
     <fieldset class="form-group">
       <label for="name">Pizza Name:</label> 
       <input type="text" name="name" ng-model="pizza.name" class="form-control" required/>

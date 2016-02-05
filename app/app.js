@@ -22,8 +22,18 @@ angular.module('myApp', [
       controller: 'CreatePizzaCtrl'
     })
     .otherwise({redirectTo: '/'});
-}])
+}]);
 
-.factory("messages",function(){
-        return {};
-});;
+// .factory("messages",function(){
+//         return {};
+// });;
+
+$(function() {
+
+  $(document).on( "click", "#editPizzaButton", function(e) {
+    e.preventDefault();
+    console.log("editbuttonpressed");
+    $('#editPizzaForm').toggleClass('hidden');
+  });
+
+});
