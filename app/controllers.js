@@ -60,17 +60,18 @@ angular.module('Controllers', ['ngRoute'])
             "price": $scope.pizza.price,
             "toppings": toppingsArray
           };
-  
-    $http.post('http://localhost:8080/pizza/', data)
-              .success(function(data, status, headers, config) {
-                // TODO: redirect to detail page of new pizza
-                $location.path('/pizza/')
-               })
-              .error(function(err) { 
-              return err; 
-               }); 
-     // TODO: reset form on submit         
-    $scope.makePizzaForm.$setPristine();
+
+      $http.post('http://localhost:8080/pizza/', data)
+                .success(function(data, status, headers, config) {
+                  console.log('success');
+                  $scope.messages = 'some text':
+                  // $location.path('/pizza/')
+                 })
+                .error(function(err) { 
+                return err; 
+                 }); 
+       // TODO: reset form on submit         
+      $scope.makePizzaForm.$setPristine();
   };
 
 
