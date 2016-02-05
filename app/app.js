@@ -22,4 +22,8 @@ angular.module('myApp', [
       controller: 'CreatePizzaCtrl'
     })
     .otherwise({redirectTo: '/'});
-}]);
+}])
+
+.factory("messages",function(){
+        return {};
+});;
