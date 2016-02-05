@@ -49,7 +49,7 @@ angular.module('Controllers', ['ngRoute'])
       $scope.makePizzaForm.$setPristine();
   };
 
-  $scope.submit = function(isValid) {
+  $scope.submit = function() {
     
     var toppingsArray = $scope.pizza.toppings.map(function (topping) {
       return JSON.parse(topping);
@@ -60,19 +60,17 @@ angular.module('Controllers', ['ngRoute'])
             "price": $scope.pizza.price,
             "toppings": toppingsArray
           };
-    if (isValid) {
-      $http.post('http://localhost:8080/pizza/', data)
-                .success(function(data, status, headers, config) {
-                  // TODO: redirect to detail page of new pizza
-                  $location.path('/pizza/')
-                 })
-                .error(function(err) { 
-                return err; 
-                 }); 
-       // TODO: reset form on submit         
-      $scope.makePizzaForm.$setPristine();
-    }
   
+    $http.post('http://localhost:8080/pizza/', data)
+              .success(function(data, status, headers, config) {
+                // TODO: redirect to detail page of new pizza
+                $location.path('/pizza/')
+               })
+              .error(function(err) { 
+              return err; 
+               }); 
+     // TODO: reset form on submit         
+    $scope.makePizzaForm.$setPristine();
   };
 
 
