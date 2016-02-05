@@ -13,6 +13,7 @@ angular.module('Controllers', ['ngRoute'])
 }])
 
 .controller('PizzaCtrl', ['$scope', '$http', function($scope, $http) {
+  $scope.resetQuery();
 
   $http.get('http://localhost:8080/pizza') 
             .success(function(data) { 
