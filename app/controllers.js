@@ -121,14 +121,31 @@ angular.module('Controllers', ['ngRoute'])
   };
 }])
 
-.controller('ToppingDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
-  $http.get('http://localhost:8080/topping/'+$routeParams.toppingId)
-    .success(function(data) { 
-      $scope.topping = data; 
-    }) 
-    .error(function(err) { 
-      return err; 
-    });
+.controller('DeletePizzaCtrl', ['$scope', '$http', '$filter', '$location', function($scope, $http, $filter, $location) {
+
+  $scope.submit = function() {
+    console.log('delete button pushed')
+
+      $http.delete('http://localhost:8080/pizza/' + $scope.pizza.id)
+                .success(function(data, status, headers, config) {
+                  $location.path('/pizza/');
+                  $scope.messages.create = $scope.pizza.name + ' has been deleted!';
+                 })
+                .error(function(err) { 
+                  $scope.messages = err;
+                 }); 
+
+  };
 }])
+
+// .controller('ToppingDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
+//   $http.get('http://localhost:8080/topping/'+$routeParams.toppingId)
+//     .success(function(data) { 
+//       $scope.topping = data; 
+//     }) 
+//     .error(function(err) { 
+//       return err; 
+//     });
+// }])
 ;
 
