@@ -2,7 +2,7 @@
 
 <div ng-controller="PizzaCtrl">
 <div ng-controller="CreatePizzaCtrl">
-  <div id="messages" class="alert alert-success" data-ng-show="messages.pizza" data-ng-bind="messages.pizza"></div>
+  <div id="messages" class="alert alert-success" data-ng-show="messages.create" data-ng-bind="messages.create"></div>
 </div>
   <ul>
     <div ng-repeat ="pizza in pizzas | filter:query">

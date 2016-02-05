@@ -1,6 +1,6 @@
 <div class = "well">
 
-<div class="alert alert-success" data-ng-show="messages.pizza" data-ng-bind="messages.pizza"></div>
+<div class="alert alert-success" data-ng-show="messages.update" data-ng-bind="messages.update"></div>
 
 <h2>{{ pizza.name }} <button type="button" class="btn btn-xs btn-primary" id="editPizzaButton">Edit</button></h2>
 <h3>Price: {{ pizza.price | currency }}</h3>
@@ -36,8 +36,8 @@ Toppings:
     </fieldset> -->
 
     <fieldset class="form-group">
-      <button type="button" class="btn btn-primary" ng-click="resetForm()">Reset</button>
-      <button type="button" class="btn btn-primary" ng-click="submit()" ng-disabled="makePizzaForm.$invalid" id="saveEditButton">Save</button>
+<!--       <button type="button" class="btn btn-primary" ng-click="resetForm()">Reset</button>
+ -->      <button type="button" class="btn btn-primary" ng-click="submit()" ng-disabled="makePizzaForm.$invalid" id="saveEditButton">Save</button>
     </fieldset>
     
     </form>
