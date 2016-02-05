@@ -66,6 +66,11 @@ angular.module('Controllers', ['ngRoute'])
                 .success(function(data, status, headers, config) {
                   console.log('success');
                   // $location.path('/pizza/');
+                  $scope.pizza = {
+                    "name": "",
+                    "price": null,
+                    "toppings": []
+                  };
                   $scope.makePizzaForm.$setPristine();
                   $scope.messages = 'Pizza has been created!';
                  })
