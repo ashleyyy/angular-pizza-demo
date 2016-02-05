@@ -64,7 +64,7 @@ angular.module('Controllers', ['ngRoute'])
       $http.post('http://localhost:8080/pizza/', data)
                 .success(function(data, status, headers, config) {
                   console.log('success');
-                  $scope.messages = 'some text':
+                  $scope.messages = 'some text';
                   // $location.path('/pizza/')
                  })
                 .error(function(err) { 
