@@ -23,6 +23,7 @@ angular.module('Controllers', ['ngRoute'])
   $http.get('http://localhost:8080/pizza/'+$routeParams.pizzaId)
     .success(function(data) { 
       $scope.pizza = data; 
+      $scope.messages.create = '';
     }) 
     .error(function(err) { 
       return err; 
