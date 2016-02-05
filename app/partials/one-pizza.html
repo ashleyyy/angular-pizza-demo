@@ -1,0 +1,10 @@
+<p>Pizza: {{ pizza.name }}</p>
+<p>Price: {{ pizza.price | currency }}</p>
+
+
+Toppings:
+<div ng-repeat ="topping in pizza.toppings">
+  <ul>
+    <li>{{ topping.name }}</li>
+    </ul>
+</div>

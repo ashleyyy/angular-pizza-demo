@@ -3,10 +3,23 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  'myApp.version', 
+  'Controllers'
+])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+    .when('/pizza', {
+      templateUrl: 'partials/all-pizzas.html',
+      controller: 'PizzaCtrl'
+    })
+    .when('/pizza/:pizzaId', {
+      templateUrl: 'partials/one-pizza.html',
+      controller: 'PizzaDetailCtrl'
+    })
+    .when('/create', {
+      templateUrl: 'partials/make-pizza.html',
+      controller: 'CreatePizzaCtrl'
+    })
+    .otherwise({redirectTo: '/'});
 }]);
