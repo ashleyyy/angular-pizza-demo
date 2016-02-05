@@ -6,7 +6,7 @@
   <fieldset class="form-group">
     <label for="name">Pizza Name:</label> 
     <input type="text" name="name" ng-model="pizza.name" class="form-control" required/>
-    <p ng-show="makePizzaForm.name.$error.required">Your pizza needs a name!</p>
+    <p ng-show="makePizzaForm.name.$invalid && !makePizzaForm.name.$pristine">Your pizza needs a name!</p>
   </fieldset>
 
   <fieldset class="form-group">
