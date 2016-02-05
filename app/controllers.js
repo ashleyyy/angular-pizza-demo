@@ -59,7 +59,6 @@ angular.module('Controllers', ['ngRoute'])
         "price": null,
         "toppings": []
       };
-      $scope.messages = null;
       $scope.makePizzaForm.$setPristine();
   };
 
@@ -86,8 +85,36 @@ angular.module('Controllers', ['ngRoute'])
 
   };
 
+}])
 
+.controller('EditPizzaCtrl', ['$scope', '$http', '$filter', '$location', function($scope, $http, $filter, $location) {
 
+  $scope.resetForm = function() {
+    console.log('reset button pushed')
+  };
+
+  $scope.submit = function(isValid) {
+    
+    // var toppingsArray = $scope.pizza.toppings.map(function (topping) {
+    //   return JSON.parse(topping);
+    // });
+  
+    var data = {
+            "name": $scope.pizza.name,
+            "price": $scope.pizza.price,
+            "toppings": $scope.pizza.toppings
+          };
+
+      $http.put('http://localhost:8080/pizza/' + $scope.pizza.id, data)
+                .success(function(data, status, headers, config) {
+                  $location.path('/pizza/');
+                  $scope.messages.create = $scope.pizza.name + ' has been updated!';
+                 })
+                .error(function(err) { 
+                  $scope.messages = err;
+                 }); 
+
+  };
 }])
 
 .controller('ToppingDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
