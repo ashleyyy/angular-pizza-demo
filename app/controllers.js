@@ -49,7 +49,7 @@ angular.module('Controllers', ['ngRoute'])
       $scope.makePizzaForm.$setPristine();
   };
 
-  $scope.submit = function() {
+  $scope.submit = function(isValid) {
     
     var toppingsArray = $scope.pizza.toppings.map(function (topping) {
       return JSON.parse(topping);
@@ -65,13 +65,14 @@ angular.module('Controllers', ['ngRoute'])
                 .success(function(data, status, headers, config) {
                   console.log('success');
                   $scope.messages = 'some text';
-                  // $location.path('/pizza/')
+                  $location.path('/pizza/');
                  })
                 .error(function(err) { 
                 return err; 
                  }); 
        // TODO: reset form on submit         
       $scope.makePizzaForm.$setPristine();
+
   };
 
 
