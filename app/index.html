@@ -40,9 +40,9 @@
 
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" ng-model="query" placeholder="Search Pizza Names">
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="button" class="btn btn-primary" ng-click="resetQuery()">Reset</button>
         </form>
       </div><!-- /.navbar-collapse -->
   </nav>

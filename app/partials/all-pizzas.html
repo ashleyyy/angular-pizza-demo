@@ -5,7 +5,7 @@
   <div id="messages" class="alert alert-success" data-ng-show="messages.create" data-ng-bind="messages.create"></div>
 </div>
   <ul>
-    <div ng-repeat ="pizza in pizzas">
+    <div ng-repeat ="pizza in pizzas | filter:query">
     <li><a href ="#/pizza/{{pizza.id}}">{{ pizza.name }}</a></li>
     </div>
   </ul>
