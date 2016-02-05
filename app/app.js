@@ -32,7 +32,11 @@ $(function() {
 
   $(document).on( "click", "#editPizzaButton", function(e) {
     e.preventDefault();
-    console.log("editbuttonpressed");
+    $('#editPizzaForm').toggleClass('hidden');
+  });
+
+  $(document).on( "click", "#saveEditButton", function(e) {
+    e.preventDefault();
     $('#editPizzaForm').toggleClass('hidden');
   });
 

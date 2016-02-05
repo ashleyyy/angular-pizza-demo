@@ -4,7 +4,7 @@ angular.module('Controllers', ['ngRoute'])
 
 .controller('ParentCtrl', ['$scope', '$http', '$filter', '$location', '$routeParams', function($scope, $http, $filter, $location, $routeParams) {
   $scope.messages = {
-      create: ''
+      pizza: ''
   };
 
   $scope.resetQuery = function() {
@@ -28,7 +28,7 @@ angular.module('Controllers', ['ngRoute'])
   $http.get('http://localhost:8080/pizza/'+$routeParams.pizzaId)
     .success(function(data) { 
       $scope.pizza = data; 
-      $scope.messages.create = '';
+      $scope.messages.pizza = '';
     }) 
     .error(function(err) { 
       return err; 
@@ -77,7 +77,7 @@ angular.module('Controllers', ['ngRoute'])
       $http.post('http://localhost:8080/pizza/', data)
                 .success(function(data, status, headers, config) {
                   $location.path('/pizza/');
-                  $scope.messages.create = $scope.pizza.name + ' has been created!';
+                  $scope.messages.pizza = $scope.pizza.name + ' has been created!';
                  })
                 .error(function(err) { 
                   $scope.messages = err;
@@ -107,8 +107,7 @@ angular.module('Controllers', ['ngRoute'])
 
       $http.put('http://localhost:8080/pizza/' + $scope.pizza.id, data)
                 .success(function(data, status, headers, config) {
-                  $location.path('/pizza/');
-                  $scope.messages.create = $scope.pizza.name + ' has been updated!';
+                  $scope.messages.pizza = $scope.pizza.name + ' has been updated!';
                  })
                 .error(function(err) { 
                   $scope.messages = err;
